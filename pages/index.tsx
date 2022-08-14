@@ -88,7 +88,7 @@ const Home: NextPage = () => {
         }}
         color={"primary"}
         disabled={index >= messages.length - 1}
-        sx={{ position: "absolute", right: "16px", bottom: "32px" }}
+        sx={{ position: "absolute", right: "16px", bottom: "40px" }}
       />
       <Chip
         label="前へ"
@@ -98,7 +98,7 @@ const Home: NextPage = () => {
         }}
         disabled={index === 0}
         color={"primary"}
-        sx={{ position: "absolute", left: "16px", bottom: "32px" }}
+        sx={{ position: "absolute", left: "16px", bottom: "40px" }}
       />
     </>
   );
