@@ -6,12 +6,13 @@ import React, { useEffect, useState } from "react";
 type Props = {
   url: string;
   title: string;
+  isLast?: boolean;
 };
 /**
  * 画像とテキストをいい感じに表示する
  * @returns
  */
-const Viewer = ({ url, title }: Props) => {
+const Viewer = ({ url, title, isLast = false }: Props) => {
   const [isLoadingImage, setIsLoadingImage] = useState(false);
 
   useEffect(() => {
@@ -64,22 +65,55 @@ const Viewer = ({ url, title }: Props) => {
             <div
               style={{
                 margin: "auto calc(50% - 50vw) ",
+                height: "100%",
                 width: "100%",
                 position: "relative",
               }}
             >
-              <img
+              <Image
                 src={url}
-                style={{
-                  width: "100%",
-                  height: "auto",
-                  display: "block",
-                  backgroundColor: "rbga(0,0,0,0.5)",
-                  margin: "0 auto",
-                }}
+                layout="fill"
+                objectFit="contain"
+                // style={{
+                //   width: "100%",
+                //   height: "auto",
+                //   display: "block",
+                //   backgroundColor: "rbga(0,0,0,0.5)",
+                //   margin: "0 auto",
+                // }}
               />
             </div>
           </>
+        )}
+        {isLast && (
+          <div
+            style={{
+              position: "absolute",
+              top: "50%",
+              left: "calc(50% - 182px)",
+              display: "flex",
+              justifyContent: "center",
+              gap: "32px",
+              width: "364px",
+              flexDirection: "row",
+            }}
+          >
+            <div>
+              <a href={"https://hci-lab.jp/personal_page/yukiabe/"}>
+                <Image src={"/port.png"} width="95px" height={"95px"} />
+              </a>
+            </div>
+            <div>
+              <a href={"https://twitter.com/YuukiHnf"}>
+                <Image src={"/twitter.png"} width="90px" height={"90px"} />
+              </a>
+            </div>
+            <div>
+              <a href={"https://www.instagram.com/yuukihnf/"}>
+                <Image src={"/insta.png"} width="100px" height={"100px"} />
+              </a>
+            </div>
+          </div>
         )}
       </div>
     </Grow>
